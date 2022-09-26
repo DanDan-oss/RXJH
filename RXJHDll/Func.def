@@ -1,0 +1,4 @@
+LIBRARY RXJHDll
+EXPORTS
+OutputDebugStringFA @ 1
+OutputDebugStringFW @ 2

@@ -1,0 +1,60 @@
+{"热血江湖":[
+	"user": [
+		{"LoginInfo": [ "ueserName":"eVvUq4P6pHIN", "PassWord":"rujdUQ1gA1y8","大区":"网通一区"}],
+		{"UserInfo": ["实名认证":"邢如林",  "身份证号码": "110105196809260035"]}
+	]
+]}
+
+struct ROLE_BASE
+{
+/* 02C5AE68 [client.exe+285AEE8]	*/
+	+0 名字
+	+34 等级
+	+80 血
+	+84 蓝
+	+8c 最大血
+	+90 最大蓝
+	+94 愤怒值
+	+ac 历练
+	+b0 心
+	+b4 气
+	+b8 体
+	+bc 魂
+	+c8 攻击
+	+cc 防御
+	+d0 命中
+	+d4 回避
+	+dc 武功命中
+	0xe4 当前背包中的金币
+};
+
+
+
+
+struct BACKPACK_ITEMS_BASE		背包物品对象
+{
+/* 	[[0x2E8213C]+1*4+0x53c]+0xD4C		*/
+
+	
+	+0x54(DWORD)		物品ID
+	+0x64		物品名称
+	+0xf9		物品描述
+	+0xD4C		物品数量
+	
+};
+
+
+struct  背包数组		/* 		[2E8213C]+1*4+053c		*/
+// 89 B4 9F ?? ?? 00 00 89 85 ?? ?? FF FF 3B 3D ?? ?? ?? ?? 74 ?? 3B 3D
+{
+
+// 使用背包物品call
+8B 87 ?? ?? 00 00 56 51 50 8B CF E8 ?? ?? ?? ?? 83 BF ?? ?? 00 00 35 75
+0087BEC4 | 8B87 D81D0000            | mov eax,dword ptr ds:[edi+1DD8]         |
+0087BECA | 56                       | push esi                                | 1   物品在背包下标
+0087BECB | 51                       | push ecx                                | 1
+0087BECC | 50                       | push eax                                | 0
+0087BECD | 8BCF                     | mov ecx,edi                             | [2E8213C+0]
+0087BECF | E8 8C34FEFF              | call client.85F360                      |
+
+};
